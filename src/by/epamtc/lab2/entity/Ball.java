@@ -1,11 +1,10 @@
 package by.epamtc.lab2.entity;
 
-import by.epamtc.lab2.util.Color;
-
 import java.io.Serializable;
-import java.util.Objects;
 
 public class Ball implements Serializable {
+    public final Color DEFAULT_COLOR=Color.ORANGE;
+    public final double DEFAULT_WEIGHT=10;
     private double weight;
     private Color color;
 
@@ -14,6 +13,8 @@ public class Ball implements Serializable {
         this.color = color;
     }
     public Ball() {
+        this.weight = DEFAULT_WEIGHT;
+        this.color = DEFAULT_COLOR;
     }
 
     public double getWeight() {
@@ -34,10 +35,9 @@ public class Ball implements Serializable {
 
     @Override
     public String toString() {
-        return "Ball{" +
-                "weight=" + weight +
-                ", color=" + color +
-                '}';
+        return getClass().getSimpleName()+ "@" +
+                "weight: " + weight +
+                ", color: " + color;
     }
 
     @Override
@@ -51,6 +51,9 @@ public class Ball implements Serializable {
 
     @Override
     public int hashCode() {
-        return Objects.hash(weight, color);
+        int result = 19;
+        result = 31 * result + (int) Double.doubleToLongBits(weight);
+        result = 31 * result + color.hashCode();
+        return result;
     }
 }

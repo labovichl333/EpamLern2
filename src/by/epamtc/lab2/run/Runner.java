@@ -3,7 +3,7 @@ package by.epamtc.lab2.run;
 import by.epamtc.lab2.entity.Ball;
 import by.epamtc.lab2.entity.Basket;
 import by.epamtc.lab2.service.BasketTool;
-import by.epamtc.lab2.util.Color;
+import by.epamtc.lab2.entity.Color;
 
 import java.util.LinkedList;
 
@@ -21,7 +21,8 @@ public class Runner {
         BasketTool basketTool=new BasketTool(basket);
         int countBlue=basketTool.countColorBalls(Color.BLUE);
         System.out.println("Число синих мячей в корзине "+countBlue);
-        double weight=basket.getActiveWeight();
+        double weight=basket.getCurrentWeight();
         System.out.println("Вес содержимого корзины "+weight);
+        System.out.println(basket.toString());
     }
 }
